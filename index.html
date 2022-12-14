@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
       href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="./style/style.min.css" />
     <link rel="stylesheet" href="./style/cssReset.css" />
@@ -17,27 +22,41 @@
   <body>
     <main class="main">
       <section class="section">
-        <div class="container"></div>
+        <div class="container">
+          <div class="job-list">
+            <div class="job-list__box left-line">
+              <div class="job-list__major">
+                <img
+                  class="job-icon"
+                  src="./images/photosnap.svg"
+                  alt="photosnap"
+                />
+                <div class="job-list__info">
+                  <div class="job-list__name">
+                    <h1 class="job-list__name-text">Photosnap</h1>
+                    <p class="job-list__name-params">New!</p>
+                    <p class="job-list__name-params">Featured</p>
+                  </div>
+                  <h1 class="job-list__vacancy">Senior Frontend Developer</h1>
+                  <div class="job-list__conditions">
+                    <p class="job-list__conditions-text">1d ago</p>
+                    <p class="job-list__conditions-text">Full Time</p>
+                    <p class="job-list__conditions-text">USA only</p>
+                  </div>
+                </div>
+              </div>
+              <div class="job-list__filters">
+                <button class="job-list__filters-item">Frontend</button>
+                <button class="job-list__filters-item">Senior</button>
+                <button class="job-list__filters-item">HTML</button>
+                <button class="job-list__filters-item">CSS</button>
+                <button class="job-list__filters-item">JavaScript</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
-    <!-- Item Start -->
-    <!-- Photosnap
-  New!
-  Featured
-  Senior Frontend Developer
-  1d ago
-  Full Time
-  USA only -->
-    <!-- Role -->
-    <!-- Frontend -->
-    <!-- Level -->
-    <!-- Senior -->
-    <!-- Languages -->
-    <!-- HTML -->
-    <!-- CSS -->
-    <!-- JavaScript -->
-    <!-- Item End -->
-
     <!-- Item Start -->
     <!-- Manage -->
     <!-- New! -->
