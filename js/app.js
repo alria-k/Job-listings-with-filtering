@@ -2,8 +2,38 @@
 
 let fillerBox = document.querySelector(".input__filler-inner"),
   filterBtn = document.querySelectorAll(".job-list__filters-item"),
+  vacancyItem = document.querySelectorAll(".job-list__box"),
   fillerItem,
   fillerArray = [];
+
+vacancyItem.forEach((e, i) => {
+  fetch("data.json")
+    .then((response) => response.json())
+    .then((json) => {
+      json.map((item, index) => {
+        if (index == i) {
+          e.dataset.role = item.role;
+          e.dataset.level = item.level;
+          e.dataset.languages = item.languages;
+          e.dataset.tools = item.tools;
+        }
+      });
+    });
+});
+
+function filtering(arr1, arr2) {
+  arr2.forEach((e2) => {
+    let dataVal = String(Object.values(e2.dataset)).split(",");
+    let eachVal = dataVal.filter((e) => {
+      return arr1.indexOf(e) >= 0;
+    });
+    dataVal.forEach((e) => {
+      if (eachVal.indexOf(e) >= arr1.length - 1) {
+        console.log(e2);
+      }
+    });
+  });
+}
 
 filterBtn.forEach((e) => {
   e.addEventListener("click", (i) => {
@@ -24,6 +54,7 @@ filterBtn.forEach((e) => {
     />`
       );
     }
+    filtering(fillerArray, vacancyItem);
   });
 });
 
