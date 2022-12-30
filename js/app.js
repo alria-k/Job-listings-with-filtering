@@ -4,7 +4,8 @@ let fillerBox = document.querySelector(".input__filler-inner"),
   filterBtn = document.querySelectorAll(".job-list__filters-item"),
   vacancyItem = document.querySelectorAll(".job-list__box"),
   fillerItem,
-  fillerArray = [];
+  fillerArray = [],
+  eachVal;
 
 vacancyItem.forEach((e, i) => {
   fetch("data.json")
@@ -23,13 +24,20 @@ vacancyItem.forEach((e, i) => {
 
 function filtering(arr1, arr2) {
   arr2.forEach((e2) => {
+    e2.classList.add("hide__item");
+    setTimeout(() => {
+      e2.style.display = "none";
+    }, 500);
     let dataVal = String(Object.values(e2.dataset)).split(",");
-    let eachVal = dataVal.filter((e) => {
+    eachVal = dataVal.filter((e) => {
       return arr1.indexOf(e) >= 0;
     });
     dataVal.forEach((e) => {
       if (eachVal.indexOf(e) >= arr1.length - 1) {
-        console.log(e2);
+        e2.classList.remove("hide__item");
+        setTimeout(() => {
+          e2.style.display = "";
+        }, 500);
       }
     });
   });
@@ -63,13 +71,17 @@ document.querySelector("body").addEventListener("click", (i) => {
     let closeItem = i.target.closest(".input__filler-item");
     fillerArray.forEach((v, i) => {
       if (closeItem.textContent == v) {
+        eachVal.splice(i, 1);
         fillerArray.splice(i, 1);
+        filtering(fillerArray, vacancyItem);
         closeItem.remove();
       }
     });
   }
   if (i.target.classList.contains("clear-btn")) {
+    eachVal.splice(0, eachVal.length);
     fillerArray.splice(0, fillerArray.length);
+    filtering(fillerArray, vacancyItem);
     document.querySelectorAll(".input__filler-item").forEach((e) => e.remove());
   }
 });
